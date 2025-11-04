@@ -1,1 +1,55 @@
-/* You can add global styles to this file, and also import other style files */
+@import url(global-styles/reset-styles.css);
+@import url(global-styles/fonts.css);
+
+:root {
+  --primary-color: #4a3aff;
+  --light-primary-color: #897fff;
+  --extra-light-primary-color: #eae8ff;
+
+  --secondary-color: #170f49;
+  --light-secondary-color: #f1f0fb;
+
+  --primary-shadow: 0 3px 10px 0 #897fff;
+  --secondary-shadow: 0 3px 10px 0 #eae8ff;
+
+  --border-color: #e0e0e0;
+  --background-color: #fafafa;
+  --placeholder-color: #999;
+  --disabled-color: #f0f0f0;
+
+  --light-text-color: #ffffff;
+  --dark-text-color: #000000;
+  --error-text-color: #e74c3c;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 26px;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 22px;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+p,
+input,
+button {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+label {
+  font-weight: 300;
+  font-size: 14px;
+}
+
+span {
+  font-size: 12px;
+  font-weight: 500;
+}

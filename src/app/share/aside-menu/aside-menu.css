@@ -1,0 +1,56 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background-color: var(--light-secondary-color);
+}
+
+.aside-list-el {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.aside-list-el__numb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  color: var(--light-text-color);
+  background: linear-gradient(var(--primary-color), var(--light-primary-color));
+  box-shadow: var(--primary-shadow);
+}
+
+.aside-list-el__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.line {
+  width: 4px;
+  height: 48px;
+  margin: 4px 22px;
+  border-radius: 2px;
+  background: var(--extra-light-primary-color);
+}
+
+.line--active {
+  background: linear-gradient(
+    to bottom,
+    var(--primary-color) 50%,
+    var(--extra-light-primary-color) 50%
+  );
+}
+
+.line--past {
+  background: var(--primary-color);
+}

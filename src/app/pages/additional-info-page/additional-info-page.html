@@ -1,0 +1,101 @@
+<div class="form-container">
+  <h2 class="form-title">Personal Information</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+    <div class="form-group">
+      <label> City <span class="required-mark">*</span> </label>
+      <input type="text" formControlName="city" placeholder="Enter your city" />
+      @if (cityCtrl?.invalid && cityCtrl?.touched) {
+      <div class="error">
+        @if (cityCtrl?.errors?.['required']) {
+        <span>City is required</span>
+        } @if (cityCtrl?.errors?.['pattern']) {
+        <span>Only letters and hyphens allowed</span>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label> Street <span class="required-mark">*</span> </label>
+      <input type="text" formControlName="street" placeholder="Enter your street" />
+      @if (streetCtrl?.invalid && streetCtrl?.touched) {
+      <div class="error">
+        @if (streetCtrl?.errors?.['required']) {
+        <span>Street is required</span>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label> Date of Birth <span class="required-mark">*</span> </label>
+      <input type="date" formControlName="birthDate" (change)="onBirthDateChange()" />
+      @if (birthDateCtrl?.invalid && birthDateCtrl?.touched) {
+      <div class="error">
+        @if (birthDateCtrl?.errors?.['required']) {
+        <span>Date of birth is required</span>
+        } @if (birthDateCtrl?.errors?.['maxAge']) {
+        <span>You must be under 150 years old</span>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label> Gender <span class="required-mark">*</span> </label>
+      <ng-select
+        [items]="genders"
+        bindLabel="."
+        bindValue="."
+        placeholder="Select your gender:"
+        [searchable]="false"
+        [clearable]="true"
+        formControlName="gender"
+        class="select-custom"
+      ></ng-select>
+      @if (genderCtrl?.invalid && genderCtrl?.touched) {
+      <div class="error"><span>Please select your gender</span></div>
+      }
+    </div>
+
+    @if (isUnder18) {
+    <div class="minor-section">
+      <h3 class="minor-title">Legal Representative Information</h3>
+      <div class="form-group">
+        <label> Full Name <span class="required-mark">*</span> </label>
+        <input
+          type="text"
+          formControlName="guardianName"
+          placeholder="Enter guardian's full name"
+        />
+        @if (guardianNameCtrl?.invalid && guardianNameCtrl?.touched) {
+        <div class="error">
+          @if (guardianNameCtrl?.errors?.['required']) {
+          <span>Guardian name is required</span>
+          } @if (guardianNameCtrl?.errors?.['pattern']) {
+          <span>Min 2 letters, no special characters</span>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label> Email <span class="required-mark">*</span> </label>
+        <input type="email" formControlName="guardianEmail" placeholder="guardian@example.com" />
+        @if (guardianEmailCtrl?.invalid && guardianEmailCtrl?.touched) {
+        <div class="error">
+          @if (guardianEmailCtrl?.errors?.['required']) {
+          <span>Guardian email is required</span>
+          } @if (guardianEmailCtrl?.errors?.['email']) {
+          <span>Invalid email format</span>
+          }
+        </div>
+        }
+      </div>
+    </div>
+    }
+
+    <button type="submit" class="submit-btn" [disabled]="form.invalid">Continue</button>
+  </form>
+</div>

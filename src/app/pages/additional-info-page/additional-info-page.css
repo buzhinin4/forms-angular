@@ -1,0 +1,118 @@
+.form-container {
+  max-width: 600px;
+  margin: 100px auto;
+  padding: 32px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: var(--secondary-shadow);
+}
+
+.form-title {
+  color: var(--dark-text-color);
+  margin-bottom: 16px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  color: var(--dark-text-color);
+  margin-bottom: 4px;
+  gap: 4px;
+}
+
+.required-mark {
+  color: var(--error-text-color);
+  font-weight: bold;
+}
+
+input,
+.select-custom {
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--background-color);
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+input::placeholder,
+::ng-deep .select-custom .ng-placeholder {
+  color: var(--placeholder-color);
+}
+
+input:focus,
+::ng-deep .select-custom.ng-select-focused {
+  border-color: var(--primary-color);
+}
+
+::ng-depth .ng-input {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+::ng-deep .ng-value-label {
+  margin-left: 4px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+::ng-deep .ng-dropdown-panel {
+  margin-left: -16px;
+  border-radius: 0 0 4px 4px;
+  border: 1px solid var(--primary-color);
+  border-top: none;
+  background-color: var(--background-color);
+}
+
+::ng-deep .ng-option {
+  padding: 6px 8px;
+}
+
+::ng-deep .ng-option:hover {
+  border-radius: 4px;
+  border: 1px solid var(--primary-color);
+}
+
+::ng-deep .ng-option-label {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.error {
+  color: var(--error-text-color);
+  margin-top: 6px;
+}
+
+.submit-btn {
+  justify-self: end;
+  padding: 12px 32px;
+  background: linear-gradient(var(--primary-color), var(--light-primary-color));
+  color: var(--light-text-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--primary-shadow);
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--primary-shadow);
+}
+
+.submit-btn:disabled {
+  background: var(--disabled-color);
+  color: var(--dark-text-color);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}

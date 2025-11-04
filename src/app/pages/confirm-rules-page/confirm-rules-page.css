@@ -1,0 +1,114 @@
+.form-container {
+  max-width: 600px;
+  margin: 100px auto;
+  padding: 32px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: var(--secondary-shadow);
+}
+
+.form-title {
+  color: var(--dark-text-color);
+  margin-bottom: 16px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  color: var(--dark-text-color);
+  margin-bottom: 4px;
+  gap: 4px;
+}
+
+.required-mark {
+  color: var(--error-text-color);
+  font-weight: bold;
+}
+
+.error {
+  color: var(--error-text-color);
+  margin-top: 6px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  color: var(--dark-text-color);
+  margin-bottom: 8px;
+}
+
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-custom {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--background-color);
+  transition: all 0.2s ease;
+  position: relative;
+  margin-top: 2px;
+}
+
+.checkbox-input:checked + .checkbox-custom {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.checkbox-input:checked + .checkbox-custom::after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  width: 6px;
+  height: 12px;
+  border: solid var(--light-text-color);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-input:focus-visible + .checkbox-custom {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.submit-btn {
+  justify-self: end;
+  padding: 12px 32px;
+  background: linear-gradient(var(--primary-color), var(--light-primary-color));
+  color: var(--light-text-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--primary-shadow);
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--primary-shadow);
+}
+
+.submit-btn:disabled {
+  background: var(--disabled-color);
+  color: var(--dark-text-color);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}

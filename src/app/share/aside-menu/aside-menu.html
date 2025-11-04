@@ -1,0 +1,25 @@
+<aside>
+  <div class="aside-list-el" (click)="goToStep(1)">
+    <div class="aside-list-el__numb">1</div>
+    <div class="aside-list-el__info">
+      <h3>Basic personal information</h3>
+      <p>Fill in your name, email.</p>
+    </div>
+  </div>
+  <div class="line" [class.line--active]="maxStep() === 1" [class.line--past]="maxStep() > 1"></div>
+  <div class="aside-list-el" (click)="goToStep(2)">
+    <div class="aside-list-el__numb">2</div>
+    <div class="aside-list-el__info">
+      <h3>Additional personal information</h3>
+      <p>Add your address, date of birth.</p>
+    </div>
+  </div>
+  <div class="line" [class.line--active]="maxStep() === 2" [class.line--past]="maxStep() > 2"></div>
+  <div class="aside-list-el" (click)="goToStep(3)">
+    <div class="aside-list-el__numb">3</div>
+    <div class="aside-list-el__info">
+      <h3>Confirmation of service rules</h3>
+      <p>Read and accept the terms of service.</p>
+    </div>
+  </div>
+</aside>

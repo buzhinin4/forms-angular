@@ -1,0 +1,39 @@
+<div class="form-container">
+  <h2 class="form-title">Confirmation</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+    <div class="form-group">
+      <label class="checkbox-label">
+        <input type="checkbox" formControlName="terms" class="checkbox-input" />
+        <span class="checkbox-custom"></span>
+        I accept the Terms of Service
+        <span class="required-mark">*</span>
+      </label>
+      @if (termsCtrl?.invalid && termsCtrl?.touched) {
+      <div class="error"><span>You must accept the Terms of Service</span></div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label class="checkbox-label">
+        <input type="checkbox" formControlName="privacy" class="checkbox-input" />
+        <span class="checkbox-custom"></span>
+        I consent to the processing of personal data
+        <span class="required-mark">*</span>
+      </label>
+      @if (privacyCtrl?.invalid && privacyCtrl?.touched) {
+      <div class="error"><span>You must give consent</span></div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label class="checkbox-label">
+        <input type="checkbox" formControlName="newsletter" class="checkbox-input" />
+        <span class="checkbox-custom"></span>
+        Subscribe to the newsletter
+      </label>
+    </div>
+
+    <button type="submit" class="submit-btn" [disabled]="form.invalid">Complete</button>
+  </form>
+</div>

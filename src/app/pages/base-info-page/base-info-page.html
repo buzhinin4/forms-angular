@@ -1,0 +1,97 @@
+<div class="form-container">
+  <h2 class="form-title">Personal information</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+    <div class="form-group">
+      <label> Full name <span class="required-mark">*</span> </label>
+      <input type="text" formControlName="name" placeholder="Enter your name" />
+      @if (nameCtrl?.invalid && nameCtrl?.touched) {
+      <div class="error">
+        @if (nameCtrl?.errors?.['required']) {
+        <span>Full name is required</span>
+        } @if(nameCtrl?.errors?.['pattern']) {
+        <span>Only letters and spaces, min 2 chars</span>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label> Email <span class="required-mark">*</span> </label>
+      <input type="email" formControlName="email" placeholder="Enter your email" />
+      @if (emailCtrl?.invalid && emailCtrl?.touched) {
+      <div class="error">
+        @if (emailCtrl?.errors?.['required']) {
+        <span>Email is required</span>
+        } @if(emailCtrl?.errors?.['email']) {
+        <span>Invalid email</span>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label> Country <span class="required-mark">*</span> </label>
+      <ng-select
+        [items]="countries"
+        bindLabel="name"
+        bindValue="name"
+        placeholder="Select your country:"
+        [searchable]="true"
+        [clearable]="true"
+        formControlName="country"
+        (change)="onCountryChange($event)"
+        class="select-custom"
+      ></ng-select>
+      @if (countryCtrl?.invalid && countryCtrl?.touched) {
+      <div class="error"><span>Please select a country</span></div>
+      }
+    </div>
+
+    @if (form.get('country')?.value) {
+    <div class="form-group">
+      <label> Phone number </label>
+      <div class="phone-input-group">
+        <input
+          type="text"
+          formControlName="phonePrefix"
+          placeholder="+"
+          class="phone-prefix"
+          readonly
+        />
+        <input
+          type="tel"
+          formControlName="phoneNumber"
+          placeholder="123 000-0000"
+          class="phone-number"
+          (input)="syncFullPhone()"
+        />
+      </div>
+      <input formControlName="telephone" hidden />
+      @if (phoneNumberCtrl?.invalid && phoneNumberCtrl?.touched) {
+      <div class="error">
+        <span>Invalid phone number, only numbers</span>
+      </div>
+      }
+    </div>
+    }
+
+    <button type="submit" class="submit-btn" [disabled]="form.invalid">Continue</button>
+  </form>
+  <div class="social-login">
+    <p class="social-login__title">Enter with</p>
+    <div class="social-buttons">
+      <button type="button" class="social-btn google" (click)="loginWith('google')">
+        <img src="/assets/svg/gmail.svg" alt="" />
+      </button>
+
+      <button type="button" class="social-btn facebook" (click)="loginWith('facebook')">
+        <img src="/assets/svg/facebook.svg" alt="" />
+      </button>
+
+      <button type="button" class="social-btn github" (click)="loginWith('github')">
+        <img src="/assets/svg/github.svg" alt="" />
+      </button>
+    </div>
+  </div>
+</div>
