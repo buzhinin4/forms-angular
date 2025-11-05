@@ -65,6 +65,14 @@ export class FormService {
     return dataJSON;
   }
 
+  send() {
+    localStorage.clear();
+
+    this.maxStepSig.set(1);
+    this.stepSig.set(1);
+    this.navigate();
+  }
+
   private getStorageKey(): string {
     return STEP_ORDER.find((s) => s.step === this.currentStep())!.path;
   }

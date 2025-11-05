@@ -39,7 +39,7 @@ export class ConfirmRulesPage {
 
   onSubmit() {
     if (this.form.valid) {
-      this.fs.save(this.form.value);
+      this.fs.send();
       alert('The form is completed and sent');
     }
   }
