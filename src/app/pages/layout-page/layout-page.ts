@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AsideMenu } from '../../share/aside-menu/aside-menu';
+import { AsideMenu } from '../../shared/aside-menu/aside-menu';
 
 @Component({
   selector: 'app-layout-page',

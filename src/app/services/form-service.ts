@@ -1,8 +1,20 @@
-import { computed, inject, Injectable, signal } from '@angular/core';
+import { computed, effect, inject, Injectable, signal } from '@angular/core';
 import { IBasicData } from '../../types/basic-data.interface';
 import { IAdditionalData } from '../../types/additional-data.interface';
 import { IConfirmData } from '../../types/confirm-data.inteface';
 import { Router } from '@angular/router';
+import { RoutePath } from '../routing/route-path.enum';
+
+interface StepConfig {
+  path: RoutePath;
+  step: number;
+}
+
+const STEP_ORDER: StepConfig[] = [
+  { path: RoutePath.BASE, step: 1 },
+  { path: RoutePath.ADDITIONAL, step: 2 },
+  { path: RoutePath.CONFIRM, step: 3 },
+];
 
 @Injectable({
   providedIn: 'root',
@@ -35,9 +47,16 @@ export class FormService {
 
   save(data: IBasicData | IAdditionalData | IConfirmData) {
     localStorage.setItem(this.getStorageKey(), JSON.stringify(data));
+    localStorage.setItem('maxStepSig', JSON.stringify(this.maxStep()));
   }
 
   load(): IBasicData | IAdditionalData | IConfirmData | null {
+    const maxStepSigJSON = localStorage.getItem('maxStepSig');
+
+    if (maxStepSigJSON != null && JSON.parse(maxStepSigJSON) > this.maxStep()) {
+      this.maxStepSig.set(JSON.parse(maxStepSigJSON));
+    }
+
     const dataJSON = localStorage.getItem(this.getStorageKey());
     if (dataJSON != null) {
       const data: IBasicData | IAdditionalData | IConfirmData = JSON.parse(dataJSON);
@@ -47,15 +66,6 @@ export class FormService {
   }
 
   private getStorageKey(): string {
-    switch (this.currentStep()) {
-      case 1:
-        return 'basic';
-      case 2:
-        return 'additional';
-      case 3:
-        return 'confirm';
-      default:
-        return '';
-    }
+    return STEP_ORDER.find((s) => s.step === this.currentStep())!.path;
   }
 }
